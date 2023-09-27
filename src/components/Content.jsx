@@ -6,7 +6,7 @@ import MovieCard from './MovieCard';
 
 // Ways to pull API to get the
 // Create a static api
-// const API_URL = 'http://www.omdbapi.com?apikey=f240b919';
+const API_URL = 'http://www.omdbapi.com?apikey=f240b919';
 
 
 //Use the API from inside of the component to gather data
@@ -18,14 +18,18 @@ const Content = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const searchMovies = async (title) => {
-    const response = await fetch(`http://www.omdbapi.com?apikey=f240b919&s=${title}`) ;//will call the api
+    const response = await fetch(`${API_URL}&s=${title}`) ;//will cal the api
     const data = await response.json();
     setMovies(data.Search)
+    console.log(data)
   }
 
   useEffect(() =>{
     searchMovies(`Avengers`)
   }, [])
+
+
+
   return ( <div className='app flex flex-col p-[4rem] justify-center items-center'>
     <div className='item-center text-base'>
         <h1 className='text-white text-3xl'>Hunt for your latest favourite movie and enjoy the show!</h1>
